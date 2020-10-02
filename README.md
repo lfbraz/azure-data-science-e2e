@@ -1,4 +1,4 @@
-# Azure Data Science with Azure Machine Learning and Azure Databricks
+# Data Science with Azure Machine Learning and Azure Databricks
 
 In this workshop we will show you how to use Azure Databricks and Azure Machine Learning for the development and training of artificial intelligence models making them available in an integration and continuous delivery process (CI/CD), demonstrating how to build an automated MLOps process consuming the generated artifacts and making them available in a simple and dynamic way for consumption from other applications.
 
