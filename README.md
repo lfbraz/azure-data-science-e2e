@@ -1,1 +1,33 @@
-# azure-data-science-e2e
+# Azure Data Science with Azure Machine Learning and Azure Databricks
+
+In this workshop we will show you how to use Azure Databricks and Azure Machine Learning for the development and training of artificial intelligence models making them available in an integration and continuous delivery process (CI/CD), demonstrating how to build an automated MLOps process consuming the generated artifacts and making them available in a simple and dynamic way for consumption from other applications.
+
+In the exercises you will learn how to build machine learning models for Churn prediction with Spark development and using a fake database for model training. The exercises also include a scenario for automating the deployment process of the model generated using this Github repository and an Azure DevOps project.
+
+The idea of ​​the Workshop is to build an end-to-end experience for developing, training, deploying and monitoring machine learning models, thus facilitating a complete Data Science experience to be reproduced in your own Azure environment.
+
+**IMPORTANT:**
+
+* The reference architecture proposed in this workshop aims to explain just enough of the role of each of the Azure Data Services included in the overall data science architecture. This workshop does not replace the need of in-depth training on each Azure service covered.
+
+* The services covered in this course are only a subset of a much larger family of Azure services. Similar outcomes can be achieved by leveraging other services and/or features not covered by this workshop. Specific business requirements may require the use of different services or features not included in this workshop.
+
+* Some concepts presented in this course can be quite complex and you may need to seek more information from different sources to compliment your understanding of the Azure services covered.
+
+## Prerequisites
+
+The following prerequisites must be completed before you start these labs:
+
+* You must be connected to the internet;
+
+* Use either Edge or Chrome when executing the labs. Internet Explorer may have issues when rendering the UI for specific Azure services.
+
+* You must have a Pay-As-You-Go Azure account with administrator - or contributor-level access to your subscription. If you don't have an account, you can sign up for an account following the instructions here: https://azure.microsoft.com/en-au/pricing/purchase-options/pay-as-you-go/. 
+
+    <br>**IMPORTANT**: Azure free subscriptions have quota restrictions that prevent the workshop resources from being deployed successfully. Please use a Pay-As-You-Go subscription instead.
+
+    <br>**IMPORTANT**: When you deploy the lab resources in your own subscription you are responsible for the charges related to the use of the services provisioned. For more information about the list of services and tips on how to save money when executing these labs, please visit the [Azure Cost Management Documentation](https://docs.microsoft.com/en-us/azure/cost-management-billing/cost-management-billing-overview#:~:text=%20Understand%20Azure%20Cost%20Management%20%201%20Plan,the%20Azure%20Cost%20Management%20%20Billing...%20More%20).
+
+![](/images/ml-lifecycle.png)
+
+![](/images/data-science-architecture.png)
