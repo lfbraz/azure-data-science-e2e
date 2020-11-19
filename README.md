@@ -50,7 +50,7 @@ By the end of the workshop you will have implemented the lab architecture refere
 
 ![](/images/data-science-architecture.png)
 
-[Lab 0: Train a churn prediction model using Azure Databricks](labs/Lab%200/Lab0.md)
+## [Lab 0: Train a churn prediction model using Azure Databricks](labs/lab%200/Lab0.md)
 
 In this lab you will use Azure Databricks to develop a simple Machine Learning model to predict customer`s churn. The customer is the most important asset for Contoso, and they need to develop actions that can mitigate this problem. So in this lab you will be able to help them to provide an mean to act in this way.
 
