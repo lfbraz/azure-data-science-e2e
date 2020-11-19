@@ -115,5 +115,18 @@ We can also import/export data from/to Data Lakes (for example an Azure Data Lak
 
 ### Prepare the data
 
-An important step of a Data Science project is regarding to **Prepare and transform the data** before creating the models. It is important to check for inconsistences and try to explore the biggest value from the data you have. So let's see some how to do some basic transformations.
+An important step of a Data Science project is regarding to **Prepare and transform the data** before creating the models. It is important to check for inconsistences and try to explore the biggest value from the data you have. So let's see how to do some basic transformations.
 
+**IMPORTANT**|
+-------------|
+**Take a look in this [notebook](/labs/lab%200/notebooks/simple-etl-with-spark.ipynb).**|
+
+### Putting all together - Develop the Machine Learning model
+
+Now it is timeeeeeeeeee !!! 😎
+
+Let's create a machine learning model using the data we prepared in the last section.
+
+**IMPORTANT**|
+-------------|
+**Take a look in this [notebook](/labs/lab%200/notebooks/model-churn-prediction.ipynb).**|
