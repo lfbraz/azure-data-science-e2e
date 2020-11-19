@@ -19,7 +19,7 @@ Azure Data Lake Storage Gen2 | [Large Scale Data Processing with Azure Data Lake
 
 Step     | Description
 -------- | -----
-![1](././images/Black1.png) | Build an Azure Data Factory Pipeline to copy data from an Azure SQL Database table
-![2](./images/Black2.png) | Use Azure Data Lake Storage Gen2 as a staging area for Polybase
-![3](./images/Black3.png) | Load data to an Azure Synapse Analytics table using Polybase
-![4](./images/Black4.png) | Visualize data from Azure Synapse Analytics using Power BI
+![1](/images/Black1.png) | Build an Azure Data Factory Pipeline to copy data from an Azure SQL Database table
+![2](/images/Black2.png) | Use Azure Data Lake Storage Gen2 as a staging area for Polybase
+![3](/images/Black3.png) | Load data to an Azure Synapse Analytics table using Polybase
+![4](/images/Black4.png) | Visualize data from Azure Synapse Analytics using Power BI

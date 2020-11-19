@@ -1,1 +1,0 @@
-Write about requirements and setting up infra
