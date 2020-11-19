@@ -105,6 +105,15 @@ Here you will provide a name and choose the best language to work on. You can ch
 
 Now let's import the data using `python` language (pyspark). Why Python? Just because we like Python 🤣.
 
-Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).
+**IMPORTANT**|
+-------------|
+**Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
 
-You can also import the notebook to you own workspace. Just righ-click on the black space below your username and choose *Import -> URL* and put the path.
+You can also import this notebook to you own workspace. Just righ-click on the black space below your username and choose *Import -> URL* and put the path.
+
+We can also import/export data from/to Data Lakes (for example an Azure Data Lake storage). If will want to see more details how to do that take a look in this [notebook](https://github.com/lfbraz/azure-databricks/blob/master/notebooks/read-from-adls.ipynb)
+
+### Prepare the data
+
+An important step of a Data Science project is regarding to **Prepare and transform the data** before creating the models. It is important to check for inconsistences and try to explore the biggest value from the data you have. So let's see some how to do some basic transformations.
+
