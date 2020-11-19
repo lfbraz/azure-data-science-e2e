@@ -20,9 +20,10 @@ Azure Data Lake Storage Gen2 | [Large Scale Data Processing with Azure Data Lake
 Step     | Description
 -------- | -----
 ![1](/images/Black1.png) | Create a Azure Databricks Workspace
-![2](/images/Black2.png) | Import Dataset to Databricks Filesystem (DBFS)
-![3](/images/Black3.png) | Prepare Dataset
-![4](/images/Black4.png) | Develop a Machine Learning model using the prepared Dataset
+![2](/images/Black2.png) | Create a Spark Cluster
+![3](/images/Black3.png) | Import Dataset to Databricks Filesystem (DBFS)
+![4](/images/Black4.png) | Prepare Dataset
+![4](/images/Black5.png) | Develop a Machine Learning model using the prepared Dataset
 
 ### Create an Azure Databricks Workspace
 
@@ -53,9 +54,57 @@ And ..
 
 ![1](/images/lab-0/3b-launch-adb-workspace.PNG)
 
+### Create a spark cluster
+
+Let's create a spark cluster. Click on **Clusters** and **Create Cluster** the following screen will appear, keep the default settings and provide a `Cluster Name`
+
+![1](/images/lab-0/4-create-spark-cluster.PNG)
+
+With that, just click on **Create Cluster** and wait for around *7 minutes*
+
 ### Import data
-Now we have the Azure Databricks Workspace we can add data to be able to work with it in the notebooks in our Workspace. There are several ways to do that and in this part we will show how to upload data using Databricks UI.
+Now, with the cluster created, we can add data to be able to work with it in the notebooks in our Workspace. There are several ways to do that and in this tutorial we will show how to upload data using Databricks UI.
 
 First, download the [dataset](https://raw.githubusercontent.com/lfbraz/azure-data-science-e2e/main/dataset/dados_clientes.csv) to your local machine (just click in *Save as* and choose your local folder)
 
+This is a .csv file with fake customer's data so we can use it in this lab to practice how to work with datasets and how to use it to develop machine learning models.
 
+Now you have the dataset in your local machine, we can upload it to Azure Databricks.
+
+In the home of your workspace click on **Import & Explore Data**
+
+![1](/images/lab-0/5a-upload-dataset.PNG)
+
+Browse to your .csv file and after click on **Create Table with UI**
+
+![](/images/lab-0/5b-upload-dataset.PNG)
+
+Select your spark cluster and click on **Preview Table**
+
+![](/images/lab-0/5c-upload-dataset.PNG)
+
+It's important to select `First row is header` and `Infer schema` options to be able to load the csv correctly.
+
+After that, click on **Create Table**. It will create a table registered in the internal Hive metastore (already created with the Databricks cluster). If you want to check for more Hive metastore options please take a look in [this](https://docs.microsoft.com/en-us/azure/databricks/kb/metastore/).
+
+It is also important to note that the .csv file was uploaded to *databricks filesystem* (dbfs):
+
+![](/images/lab-0/5d-upload-dataset.PNG)
+
+This path can be also used to import the file directly from the notebooks. So let's try it! 😁
+
+#### Read the data from the notebook
+
+Now we can create a notebook to be able to import and explore the data. So let's create a notebook. Click in the **Workspace** icon and right click in the blank space below your user:
+
+![](/images/lab-0/5-create-notebook.PNG)
+
+So just click on *Create -> Notebook*.
+
+Here you will provide a name and choose the best language to work on. You can choose Python, Scala, R or Spark SQL. This is only the *default* language to work with, but you can choose another one using `%language`(like `%sql`, `%python`, etc.) in each cell inside the notebooks.
+
+Now let's import the data using `python` language (pyspark). Why Python? Just because we like Python 🤣.
+
+Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).
+
+You can also import the notebook to you own workspace. Just righ-click on the black space below your username and choose *Import -> URL* and put the path.
