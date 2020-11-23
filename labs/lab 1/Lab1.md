@@ -17,7 +17,7 @@ Azure Machine Learning - Deployment | [Deploy real-time machine learning service
 
 ## Lab Architecture
 
-![](/images/data-science-architecture-lab-0.png)
+![](/images/data-science-architecture-lab-1.png)
 
 Step     | Description
 -------- | -----
