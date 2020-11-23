@@ -52,6 +52,14 @@ By the end of the workshop you will have implemented the lab architecture refere
 
 ## [Lab 0: Train a churn prediction model using Azure Databricks](labs/lab%200/Lab0.md)
 
+In this lab you will use Azure Databricks to develop a simple Machine Learning model to predict customer`s churn. The customer is the most important asset for Contoso, and they need to develop actions that can mitigate this problem. So in this lab you will be able to help them to provide a mean to act in this way.
+
+You will train a machine learning model with `sklearn` framework. After the training you will track the model using [`mlflow`](https://docs.microsoft.com/pt-br/azure/databricks/applications/mlflow/) package as well. MLflow is an open source platform for managing the end-to-end machine learning lifecycle. It has the following primary components: tracking, models, projects, model registry and model serving. In this lab we will demonstrate how to use the tracking capabilities to be able to deploy the model after this Lab.
+
+The estimated time to complete this lab is: **60 minutes**
+
+## [Lab 1: Train a churn prediction model using Azure Databricks](labs/lab%200/Lab0.md)
+
 In this lab you will use Azure Databricks to develop a simple Machine Learning model to predict customer`s churn. The customer is the most important asset for Contoso, and they need to develop actions that can mitigate this problem. So in this lab you will be able to help them to provide an mean to act in this way.
 
 The estimated time to complete this lab is: **45 minutes**
