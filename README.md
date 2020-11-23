@@ -58,8 +58,8 @@ You will train a machine learning model with `sklearn` framework. After the trai
 
 The estimated time to complete this lab is: **60 minutes**
 
-## [Lab 1: Train a churn prediction model using Azure Databricks](labs/lab%200/Lab0.md)
+## [Lab 1: Deploy the machine learning model](labs/lab%201/Lab1.md)
 
-In this lab you will use Azure Databricks to develop a simple Machine Learning model to predict customer`s churn. The customer is the most important asset for Contoso, and they need to develop actions that can mitigate this problem. So in this lab you will be able to help them to provide an mean to act in this way.
+In this lab you will use Azure Databricks to deploy the machine learning model trained in the previous lab. For this, we will use the integration capability of Azure Databricks and Azure Machine Learning.
 
 The estimated time to complete this lab is: **45 minutes**
