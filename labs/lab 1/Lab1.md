@@ -50,3 +50,16 @@ Now go to your resource group and click on the new resource created (with the `W
 
 In the Azure Machine Learning Workspace we have a lof of interesting features, among them some useful resources to lead with MLOps aspects. In this lab we will use **Model registry**, **Compute** and **Endpoints** capabilities that can help us during the deployment process integrated with Azure Databricks.
 
+![](/images/lab-1/3-mlops-capabilities.PNG)
+
+### Deploy to Azure Container Instance (ACI)
+
+Now we have an Azure Machine Learning Workspace we can use it to integrate with our Azure Databricks Workspace to be able to build a MLOps process.
+
+For this, we can use MLFlow together with Azure ML SDK, so it will be possible to integrate the best of this two worlds. 😋
+
+**IMPORTANT**|
+-------------|
+**Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
+
+You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> URL* and put the path.
