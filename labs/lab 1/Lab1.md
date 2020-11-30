@@ -72,7 +72,7 @@ In this lab, inspired from this [doc](https://docs.microsoft.com/en-us/azure/azu
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%201/notebooks/read-data.ipynb).**|
+**Take a look in this [notebook](/labs/lab%201/notebooks/deploy-model-to-azure-function.ipynb).**|
 
 You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> URL* and put the path.
 
