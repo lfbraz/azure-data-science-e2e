@@ -63,3 +63,51 @@ For this, we can use MLFlow together with Azure ML SDK, so it will be possible t
 **Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
 
 You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> URL* and put the path.
+
+### BONUS: Deploy to Azure Functions
+
+We can also deploy our Machine Learning model to an Azure Function. With [Functions](https://azure.microsoft.com/en-us/services/functions/) we can have an event-driven serverless compute platform that can also solve complex orchestration problems. Build and debug locally without additional setup, deploy and operate at scale in the cloud, and integrate services using triggers and bindings.
+
+In this lab, inspired from this [doc](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-ml) (some parts were copied from there) we will use our already trained model to be deployed to an Azure Function. For this, we can use `azureml-contrib-functions` together with Azure ML SDK.
+
+**IMPORTANT**|
+-------------|
+**Take a look in this [notebook](/labs/lab%201/notebooks/read-data.ipynb).**|
+
+You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> URL* and put the path.
+
+With this notebook, you will package the already trained model as a docker image an register it in the Azure Container Registry (in a  repository named as package). Now we need to use `az-cli` to create the Azure Function and associate it with the model image. To see more details about this process please also take a look in this [doc](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-ml).
+
+First, let's get the login credentials from Azure Container Registry:
+
+`az acr credential show --name <myacr>`
+
+This results (**username** and **password**) will be used soon.
+
+For the Azure Function we will need a [*app service plan*](https://docs.microsoft.com/en-us/azure/app-service/overview-hosting-plans), so let`s create it:
+
+`az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux`
+
+In this example, a Linux basic pricing tier (--sku B1) is used.
+IMPORTANT: Images created by Azure Machine Learning use Linux, so you must use the --is-linux parameter.
+
+For this process we need to connect an [Storage Account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview) to be used for the web job storage. You can create it with the following:
+
+`az storage account create --name <webjobStorage> --location locationofstorageaccount --resource-group myresourcegroup --sku Standard_LRS`
+
+Now, we will create the Azure Function. Replace <app-name> with the name you want to use. Replace <acrinstance> and <imagename> with the values from returned package.location earlier. Replace <webjobStorage> with the name of the storage account from the previous step:
+
+`az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>`
+
+To provide the function app with the credentials needed to access the container registry, use the following command. Replace <app-name> with the name of the function app. Replace <acrinstance> and <imagetag> with the values from the AZ CLI call in the previous step. Replace <username> and <password> with the ACR login information retrieved earlier:
+
+`az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>`
+
+We did it! 😜
+
+To test the Rest Endpoint we can use some tool like `Postman`, etc. or simply follow the steps:
+
+1. Go to your Azure Function app in the Azure portal.
+2. Under developer, select Code + Test.
+3. On the right hand side, select the Input tab.
+4. Click on the Run button to test the Azure Function HTTP trigger. 
