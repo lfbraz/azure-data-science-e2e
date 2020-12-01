@@ -17,7 +17,7 @@ Azure Machine Learning - Deployment | [Deploy real-time machine learning service
 
 ## Lab Architecture
 
-![](/images/data-science-architecture-lab-1.png)
+![1](/images/data-science-architecture-lab-1.png)
 
 Step     | Description
 -------- | -----
@@ -46,11 +46,11 @@ The deployment process will start and after some minutes we will have the Azure 
 
 Now go to your resource group and click on the new resource created (with the `Workspace Name` you provided), so click on **Launch Workspace**
 
-![](/images/lab-1/2-launch-aml-workspace.PNG)
+![1](/images/lab-1/2-launch-aml-workspace.PNG)
 
 In the Azure Machine Learning Workspace we have a lof of interesting features, among them some useful resources to lead with MLOps aspects. In this lab we will use **Model registry**, **Compute** and **Endpoints** capabilities that can help us during the deployment process integrated with Azure Databricks.
 
-![](/images/lab-1/3-mlops-capabilities.PNG)
+![1](/images/lab-1/3-mlops-capabilities.PNG)
 
 ### Deploy to Azure Container Instance (ACI)
 
@@ -95,11 +95,11 @@ For this process we need to connect an [Storage Account](https://docs.microsoft.
 
 `az storage account create --name <webjobStorage> --location locationofstorageaccount --resource-group myresourcegroup --sku Standard_LRS`
 
-Now, we will create the Azure Function. Replace <app-name> with the name you want to use. Replace <acrinstance> and <imagename> with the values from returned package.location earlier. Replace <webjobStorage> with the name of the storage account from the previous step:
+Now, we will create the Azure Function. Replace `app-name` with the name you want to use. Replace `acrinstance` and `imagename` with the values from returned package.location earlier. Replace `webjobStorage` with the name of the storage account from the previous step:
 
 `az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>`
 
-To provide the function app with the credentials needed to access the container registry, use the following command. Replace <app-name> with the name of the function app. Replace <acrinstance> and <imagetag> with the values from the AZ CLI call in the previous step. Replace <username> and <password> with the ACR login information retrieved earlier:
+To provide the function app with the credentials needed to access the container registry, use the following command. Replace `app-name` with the name of the function app. Replace `acrinstance` and `imagetag` with the values from the AZ CLI call in the previous step. Replace `username` and `password` with the ACR login information retrieved earlier:
 
 `az functionapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagetag> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>`
 
@@ -110,4 +110,4 @@ To test the Rest Endpoint we can use some tool like `Postman`, etc. or simply fo
 1. Go to your Azure Function app in the Azure portal.
 2. Under developer, select Code + Test.
 3. On the right hand side, select the Input tab.
-4. Click on the Run button to test the Azure Function HTTP trigger. 
+4. Click on the Run button to test the Azure Function HTTP trigger.
