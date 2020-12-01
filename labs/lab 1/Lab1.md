@@ -60,7 +60,7 @@ For this, we can use MLFlow together with Azure ML SDK, so it will be possible t
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
+**Take a look in this [notebook](/labs/lab%201/notebooks/deploy-model-churn-prediction.ipynb).**|
 
 You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> URL* and put the path.
 
