@@ -12,8 +12,7 @@ The following Azure services will be used in this lab. If you need further train
 
 Azure Service | Microsoft Learn | Technical Documentation|
 --------------|-----------------|------------------------|
-Azure Machine Learning| [Monitor models with Azure Machine Learning
-](https://docs.microsoft.com/en-us/learn/paths/build-ai-solutions-with-azure-ml-service/) | [Monitor and collect data from ML web service endpoints](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights/)
+Azure Machine Learning| [Monitor models with Azure Machine Learning](https://docs.microsoft.com/en-us/learn/paths/build-ai-solutions-with-azure-ml-service/) | [Monitor and collect data from ML web service endpoints](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-enable-app-insights/)
 Azure Monitor| [Analyze your Azure infrastructure by using Azure Monitor logs](https://docs.microsoft.com/en-us/learn/modules/analyze-infrastructure-with-azure-monitor-logs/) | [Azure Monitor Technical Documentation](https://docs.microsoft.com/pt-br/azure/azure-monitor/overview)
 
 ## Lab Architecture
