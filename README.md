@@ -63,3 +63,15 @@ The estimated time to complete this lab is: **60 minutes**
 In this lab you will use Azure Databricks to deploy the machine learning model trained in the previous lab. For this, we will use the integration capability of Azure Databricks and Azure Machine Learning.
 
 The estimated time to complete this lab is: **45 minutes**
+
+## [Lab 2: Build a MLOps Pipeline](labs/lab%202/Lab2.md)
+
+XXX.
+
+The estimated time to complete this lab is: **45 minutes**
+
+## [Lab 3: Monitor your machine learning model](labs/lab%203/Lab3.md)
+
+In this lab you will see how you can use Application Insights to monitor your Machine Learning model as well as to use it to log custom events that you want to track.
+
+The estimated time to complete this lab is: **45 minutes**
