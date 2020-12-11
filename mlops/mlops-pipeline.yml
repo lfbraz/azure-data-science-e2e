@@ -23,7 +23,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Train
       inputs:
-        notebookPath: /Shared/train
+        notebookPath: /Shared/churn-model/train
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
@@ -42,7 +42,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Unit tests
       inputs:
-        notebookPath: /Shared/tests
+        notebookPath: /Shared/churn-model/tests
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
@@ -65,7 +65,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Deploy to ACI
       inputs:
-        notebookPath: /Shared/deploy-aci
+        notebookPath: /Shared/churn-model/deploy-aci
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Build image notebook'
@@ -87,7 +87,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Deploy to AKS
       inputs:
-        notebookPath: /Shared/deploy-aks
+        notebookPath: /Shared/churn-model/deploy-aks
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Build image notebook'
