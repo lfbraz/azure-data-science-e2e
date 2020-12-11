@@ -21,7 +21,6 @@
 # MAGIC 
 # MAGIC # Handle requests to the service
 # MAGIC def run(data):
-# MAGIC   # JSON request.
 # MAGIC   
 # MAGIC   info = {"payload": data}
 # MAGIC   print(json.dumps(info))
