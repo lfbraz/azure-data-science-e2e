@@ -66,7 +66,7 @@ The estimated time to complete this lab is: **45 minutes**
 
 ## [Lab 2: Build a MLOps Pipeline](labs/lab%202/Lab2.md)
 
-XXX.
+In this lab you will create a MLOps Pipeline using Azure DevOps to automate the deployment of the churn model.
 
 The estimated time to complete this lab is: **45 minutes**
 
