@@ -25,11 +25,6 @@ stages:
       inputs:
         notebookPath: /Shared/churn-model/train
         existingClusterId: $(databricks-cluster-id)
-    - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
-      displayName: Create entry point
-      inputs:
-        notebookPath: /Shared/churn-model/entry
-        existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
   - job: tests
@@ -68,12 +63,19 @@ stages:
         url: $(databricks-url)
         token: $(databricks-token)
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
+      displayName: Create entry script
+      inputs:
+        notebookPath: /Shared/churn-model/entry
+        existingClusterId: $(databricks-cluster-id)
+    - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
+      displayName: 'Wait for entry script'
+    - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Deploy to ACI
       inputs:
         notebookPath: /Shared/churn-model/deploy-aci
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
-      displayName: 'Wait for Build image notebook'
+      displayName: 'Wait for ACI notebook'
 - stage: deploy_prod
   displayName: Deploy to PROD
   jobs:
