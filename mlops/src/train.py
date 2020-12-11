@@ -39,4 +39,4 @@ model = load_model(model_uri)
 # Persist in the DBFS
 persist_model(model, '/dbfs/models/churn-prediction')
 
-print('Model trained')
+print('Model trained - TEST')
