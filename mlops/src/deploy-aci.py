@@ -20,6 +20,7 @@ entry_script = '/dbfs/models/churn-prediction/score.py'
 
 #Endpoint - DEV
 endpoint_name = 'api-churn-dev'
+print()
 
 workspace = get_workspace(workspace_name, resource_group, subscription_id)
 
