@@ -42,7 +42,7 @@ The following prerequisites must be completed before you start these labs:
 
 ## Lab Guide
 
-Throughout a series of X labs you will progressively implement a data science architecture using datasets developed specially for this Lab 🤩.
+Throughout a series of five labs you will progressively implement a data science architecture using datasets developed specially for this Lab 🤩.
 
 You will start by developing a *churn prediction model* using Azure Databricks. To do this, you must import a dataset with customer information from Empresa Contoso already classified with information from customers who previously canceled the service or not.
 
