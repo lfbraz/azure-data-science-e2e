@@ -62,7 +62,7 @@ For this, we can use MLFlow together with Azure ML SDK, so it will be possible t
 -------------|
 **Take a look in this [notebook](/labs/lab%201/notebooks/deploy-model-churn-prediction.ipynb).**|
 
-You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> File* and put the path of the file.
+You can also import this notebook to your own workspace. Just right-click on the blank space below your username and choose *Import -> File* and put the path of the file. You can download to your local machine and upload to Databricks Workspace as well.
 
 ### BONUS: Deploy to Azure Functions
 
@@ -73,8 +73,6 @@ In this lab, inspired from this [doc](https://docs.microsoft.com/en-us/azure/azu
 **IMPORTANT**|
 -------------|
 **Take a look in this [notebook](/labs/lab%201/notebooks/deploy-model-to-azure-function.ipynb).**|
-
-You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> File* and put the path of the file.
 
 With this notebook, you will package the already trained model as a docker image an register it in the Azure Container Registry (in a  repository named as package). Now we need to use `az-cli` to create the Azure Function and associate it with the model image. To see more details about this process please also take a look in this [doc](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-ml).
 
