@@ -109,7 +109,7 @@ Now let's import the data using `python` language (pyspark). Why Python? Just be
 -------------|
 **Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
 
-You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> File* and put the path of the file.
+You can also import this notebook to your own workspace. Just right-click on the blank space below your username and choose *Import -> File* and put the path of the file. You can download to your local machine and upload to Databricks Workspace as well.
 
 We can also import/export data from/to Data Lakes (for example an Azure Data Lake storage). If will want to see more details how to do that take a look in this [notebook](https://github.com/lfbraz/azure-databricks/blob/master/notebooks/read-from-adls.ipynb)
 
