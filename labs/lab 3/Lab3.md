@@ -30,4 +30,4 @@ Step     | Description
 -------------|
 **Take a look in this [notebook](/labs/lab%203/notebooks/monitor-with-appinsights.ipynb).**|
 
-You can also import this notebook to you own workspace. Just righ-click on the blank space below your username and choose *Import -> File* and put the path of the file.
+You can also import this notebook to your own workspace. Just right-click on the blank space below your username and choose *Import -> File* and put the path of the file. You can download to your local machine and upload to Databricks Workspace as well.
