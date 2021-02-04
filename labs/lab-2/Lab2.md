@@ -33,7 +33,7 @@ Step     | Description
 
 **IMPORTANT**|
 -------------|
-**Review this notebook [notebook](/labs/lab%201/notebooks/deploy-model-churn-prediction.ipynb)** and don't forget to automate your model training as well|
+**Review this notebook [notebook](/labs/lab-1/notebooks/deploy-model-churn-prediction.ipynb)** and don't forget to automate your model training as well|
 
 Follow a suggestion's structure (in this case we used the *Shared* structured in the Databricks Workspace):
 

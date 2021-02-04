@@ -107,11 +107,11 @@ Now let's import the data using `python` language (pyspark). Why Python? Just be
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%200/notebooks/read-data.ipynb).**|
+**Take a look in this [notebook](/labs/lab-0/notebooks/read-data.ipynb).**|
 
 You can also import this notebook to your own workspace. Just right-click on the blank space below your username and choose *Import -> File* and put the path of the file. You can download to your local machine and upload to Databricks Workspace as well.
 
-We can also import/export data from/to Data Lakes (for example an Azure Data Lake storage). If will want to see more details how to do that take a look in this [notebook](https://github.com/lfbraz/azure-databricks/blob/master/notebooks/read-from-adls.ipynb)
+We can also import/export data from/to Data Lakes (for example an Azure Data Lake storage). If you want to see more details how to do that take a look in this [notebook](https://github.com/lfbraz/azure-databricks/blob/master/notebooks/read-from-adls.ipynb)
 
 ### Prepare the data
 
@@ -119,7 +119,7 @@ An important step of a Data Science project is regarding to **Prepare and transf
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%200/notebooks/simple-etl-with-spark.ipynb).**|
+**Take a look in this [notebook](/labs/lab-0/notebooks/simple-etl-with-spark.ipynb).**|
 
 ### Putting all together - Develop the Machine Learning model
 
@@ -129,4 +129,4 @@ Let's create a machine learning model using the data we prepared in the last sec
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%200/notebooks/model-churn-prediction.ipynb).**|
+**Take a look in this [notebook](/labs/lab-0/notebooks/model-churn-prediction.ipynb).**|

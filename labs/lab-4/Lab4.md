@@ -25,7 +25,7 @@ Step     | Description
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%204/notebooks/enable-collect-data.ipynb).**|
+**Take a look in this [notebook](/labs/lab-4/notebooks/enable-collect-data.ipynb).**|
 
 You can also import this notebook to your own workspace. Just right-click on the blank space below your username and choose *Import -> File* and put the path of the file. You can download to your local machine and upload to Databricks Workspace as well.
 
@@ -33,4 +33,4 @@ You can also import this notebook to your own workspace. Just right-click on the
 
 **IMPORTANT**|
 -------------|
-**Take a look in this [notebook](/labs/lab%204/notebooks/datadrift-tutorial.ipynb).**|
+**Take a look in this [notebook](/labs/lab-4/notebooks/datadrift-tutorial.ipynb).**|
