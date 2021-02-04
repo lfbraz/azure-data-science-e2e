@@ -83,3 +83,5 @@ The estimated time to complete this lab is: **45 minutes**
 In this lab you will see how you can monitor Data Drift in your models do automatically detect when is important to retrain the models with new data incoming.
 
 The estimated time to complete this lab is: **30 minutes**
+
+******************************************************************************************************************************************************************
