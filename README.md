@@ -50,7 +50,7 @@ By the end of the workshop you will have implemented the lab architecture refere
 
 ![](/images/data-science-architecture.png)
 
-## [Lab 0: Train a churn prediction model using Azure Databricks](labs/lab%200/Lab0.md)
+## [Lab 0: Train a churn prediction model using Azure Databricks](labs/lab-0/Lab0.md)
 
 In this lab you will use Azure Databricks to develop a simple Machine Learning model to predict customer`s churn. The customer is the most important asset for Contoso, and they need to develop actions that can mitigate this problem. So in this lab you will be able to help them to provide a mean to act in this way.
 
@@ -58,25 +58,25 @@ You will train a machine learning model with `sklearn` framework. After the trai
 
 The estimated time to complete this lab is: **60 minutes**
 
-## [Lab 1: Deploy the machine learning model](labs/lab%201/Lab1.md)
+## [Lab 1: Deploy the machine learning model](labs/lab-1/Lab1.md)
 
 In this lab you will use Azure Databricks to deploy the machine learning model trained in the previous lab. For this, we will use the integration capability of Azure Databricks and Azure Machine Learning.
 
 The estimated time to complete this lab is: **45 minutes**
 
-## [Lab 2: Build a MLOps Pipeline](labs/lab%202/Lab2.md)
+## [Lab 2: Build a MLOps Pipeline](labs/lab-2/Lab2.md)
 
 In this lab you will create a MLOps Pipeline using Azure DevOps to automate the deployment of the churn model.
 
 The estimated time to complete this lab is: **45 minutes**
 
-## [Lab 3: Monitor your machine learning model](labs/lab%203/Lab3.md)
+## [Lab 3: Monitor your machine learning model](labs/lab-3/Lab3.md)
 
 In this lab you will see how you can use Application Insights to monitor your Machine Learning model as well as to use it to log custom events that you want to track.
 
 The estimated time to complete this lab is: **45 minutes**
 
-## [Lab 4: Detect Data Drift (preview)](labs/lab%204/Lab4.md)
+## [Lab 4: Detect Data Drift (preview)](labs/lab-4/Lab4.md)
 
 In this lab you will see how you can monitor Data Drift in your models do automatically detect when is important to retrain the models with new data incoming.
 
