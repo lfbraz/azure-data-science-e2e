@@ -1,6 +1,6 @@
 # Lab 1: Deploy the machine learning model
 
-In this lab you will deploy a real-time endpoint to consume the machine learning model trained in the previous lab (take a look in the [Lab 0](../lab%200/Lab0.md)).
+In this lab you will deploy a real-time endpoint to consume the machine learning model trained in the previous lab (take a look in the [Lab 0](../lab-0/Lab0.md)).
 
 Azure Machine Learning provides robust MLOps capabilities that integrate with existing DevOps processes and help manage the complete ML lifecycle.
 
