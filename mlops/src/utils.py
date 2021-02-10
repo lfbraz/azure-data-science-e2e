@@ -162,3 +162,4 @@ def deploy_aks(workspace, model_azure, endpoint_name, inference_config, aks_name
  
   print(f"Endpoint : {endpoint_name} was successfully deployed to AKS")
   print(f"Endpoint : {aks_service.scoring_uri} created")
+  print('')
