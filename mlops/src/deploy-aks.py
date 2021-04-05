@@ -4,9 +4,9 @@
 # COMMAND ----------
 
 # Workspace config
-workspace_name = 'e2e-datascience-aml'
-resource_group = 'RG-E2E-DATA-SCIENCE'
-subscription_id = 'f56912be-98e5-44e3-9e64-54bc52cef4a7'
+workspace_name = '<YOUR-WORKSPACE>'
+resource_group = '<YOUR-RESOURCE-GROUP>'
+subscription_id = '<YOUR-SUBSCRIPTION-ID>'
 
 # Model
 model_name = 'churn-model'
