@@ -56,7 +56,7 @@ And ..
 
 ### Create a spark cluster
 
-Let's create a spark cluster. Click on **Clusters** and **Create Cluster** the following screen will appear, keep the default settings and provide a `Cluster Name`
+Let's create a spark cluster. Click on **Clusters** and **Create Cluster** the following screen will appear, on `Databricks Runtime Version` choose a **ML** version, which already comes with the mlflow package installed, provide a `Cluster Name` and keep the default settings.
 
 ![1](/images/lab-0/4-create-spark-cluster.PNG)
 

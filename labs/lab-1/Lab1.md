@@ -74,7 +74,9 @@ In this lab, inspired from this [doc](https://docs.microsoft.com/en-us/azure/azu
 -------------|
 **Take a look in this [notebook](/labs/lab-1/notebooks/deploy-model-to-azure-function.ipynb).**|
 
-With this notebook, you will package the already trained model as a docker image an register it in the Azure Container Registry (in a  repository named as package). Now we need to use `az-cli` to create the Azure Function and associate it with the model image. To see more details about this process please also take a look in this [doc](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-ml).
+With this notebook, you will package the already trained model as a docker image an register it in the Azure Container Registry (in a  repository named as package). To see more details about this process please also take a look in this [doc](https://docs.microsoft.com/en-us/azure/azure-cache-for-redis/cache-ml).
+
+Now we need to use `az-cli` to create the Azure Function and associate it with the model image. If you don't have the `az-cli` installed, please take a look in this link: [Install the Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 First, let's get the login credentials from Azure Container Registry:
 
