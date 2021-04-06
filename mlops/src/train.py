@@ -18,7 +18,7 @@ dataset, numeric_columns = preprocessing(dataset)
 train_dataset, test_dataset = split_dataset(dataset, seed)
 
 # Parameters we got from the best interaction
-params = {'early_stopping_rounds': 50, 
+params = {'early_stopping_rounds': 60, 
           'learning_rate': 0.2260, 
           'max_depth': 62, 
           'maximize': False, 
