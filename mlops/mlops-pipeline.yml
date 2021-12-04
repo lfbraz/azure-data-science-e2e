@@ -28,24 +28,6 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
   - job: tests
-    displayName: Unit Tests
-    steps:
-    - task: UsePythonVersion@0
-      displayName: Use Python 3.7.*
-      inputs:
-        versionSpec: 3.7.*
-    - task: riserrad.azdo-databricks.azdo-databricks-configuredatabricks.configuredatabricks@0
-      displayName: 'Configure Databricks Cluster'
-      inputs:
-        url: $(databricks-url)
-        token: $(databricks-token)
-    - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
-      displayName: Unit tests
-      inputs:
-        notebookPath: /Repos/lubraz@microsoft.com/azure-data-science-e2e/mlops/src/tests
-        existingClusterId: $(databricks-cluster-id)
-    - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
-      displayName: 'Wait for Training notebook'
 
 - stage: deploy_dev
   displayName: Deploy to DEV
