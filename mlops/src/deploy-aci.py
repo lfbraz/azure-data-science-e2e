@@ -1,12 +1,12 @@
 # Databricks notebook source
-# MAGIC %run /Shared/churn-model/utils
+# MAGIC %run ../src/utils
 
 # COMMAND ----------
 
 # Workspace config
-workspace_name = '<YOUR-WORKSPACE>'
-resource_group = '<YOUR-RESOURCE-GROUP>'
-subscription_id = '<YOUR-SUBSCRIPTION-ID>'
+workspace_name = dbutils.secrets.get(scope = "azure-key-vault", key = "workspace-name")
+resource_group = dbutils.secrets.get(scope = "azure-key-vault", key = "resource-group")
+subscription_id = dbutils.secrets.get(scope = "azure-key-vault", key = "subscription-id")
 
 # Model
 model_name = 'churn-model'
@@ -29,4 +29,5 @@ inference_config = get_inference_config(environment_name, conda_dep_file, entry_
 service = deploy_aci(workspace, model_azure, endpoint_name, inference_config)
 
 # COMMAND ----------
+
 

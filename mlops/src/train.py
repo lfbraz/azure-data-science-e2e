@@ -1,5 +1,5 @@
 # Databricks notebook source
-# MAGIC %run /Shared/churn-model/utils
+# MAGIC %run ../src/utils
 
 # COMMAND ----------
 
