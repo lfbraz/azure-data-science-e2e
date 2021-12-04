@@ -20,6 +20,11 @@ stages:
       inputs:
         url: $(databricks-url)
         token: $(databricks-token)
+    - task: Bash@3
+      displayName: 'Set Databricks CLI version'
+      inputs:
+        targetType: 'inline'
+        script: 'databricks jobs configure --version=2.1'
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Train
       inputs:
