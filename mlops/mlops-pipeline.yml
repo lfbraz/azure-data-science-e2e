@@ -5,11 +5,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
+
 - stage: train_model
   displayName: Train
   jobs:
   - job: train
-    displayName: Train model
+    displayName: Model Train
     steps:
     - task: UsePythonVersion@0
       displayName: Use Python 3.7.*
@@ -27,13 +28,12 @@ stages:
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
-  - job: tests
 
-- stage: deploy_dev
-  displayName: Deploy to DEV
+- stage: register_model
+  displayName: Model Register
   jobs:
-  - job: deploy_aci
-    displayName: Deploy to Dev
+  - job: register
+    displayName: Model Register
     steps:
     - task: UsePythonVersion@0
       displayName: Use Python 3.7.*
@@ -45,38 +45,10 @@ stages:
         url: $(databricks-url)
         token: $(databricks-token)
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
-      displayName: Create entry script
+      displayName: Register
       inputs:
-        notebookPath: /Repos/lubraz@microsoft.com/azure-data-science-e2e/mlops/src/entry
+        notebookPath: /Repos/lubraz@microsoft.com/azure-data-science-e2e/mlops/src/register
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
-      displayName: 'Wait for entry script'
-    - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
-      displayName: Deploy to ACI
-      inputs:
-        notebookPath: /Repos/lubraz@microsoft.com/azure-data-science-e2e/mlops/src/deploy-aci
-        existingClusterId: $(databricks-cluster-id)
-    - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
-      displayName: 'Wait for ACI notebook'
-- stage: deploy_prod
-  displayName: Deploy to PROD
-  jobs:
-  - job: deploy_aci
-    displayName: Deploy to Prod
-    steps:
-    - task: UsePythonVersion@0
-      displayName: Use Python 3.7.*
-      inputs:
-        versionSpec: 3.7.*
-    - task: riserrad.azdo-databricks.azdo-databricks-configuredatabricks.configuredatabricks@0
-      displayName: 'Configure Databricks Cluster'
-      inputs:
-        url: $(databricks-url)
-        token: $(databricks-token)
-    - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
-      displayName: Deploy to AKS
-      inputs:
-        notebookPath: /Repos/lubraz@microsoft.com/azure-data-science-e2e/mlops/src/deploy-aks
-        existingClusterId: $(databricks-cluster-id)
-    - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
-      displayName: 'Wait for Build image notebook'
+      displayName: 'Wait for Training notebook'
+
