@@ -23,7 +23,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Train
       inputs:
-        notebookPath: /Shared/churn-model/train
+        notebookPath: /mlops/src/deploy-aks/train
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
@@ -42,7 +42,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Unit tests
       inputs:
-        notebookPath: /Shared/churn-model/tests
+        notebookPath: /mlops/src/tests
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Training notebook'
@@ -65,14 +65,14 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Create entry script
       inputs:
-        notebookPath: /Shared/churn-model/entry
+        notebookPath: /mlops/src/entry
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for entry script'
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Deploy to ACI
       inputs:
-        notebookPath: /Shared/churn-model/deploy-aci
+        notebookPath: /mlops/src/deploy-aci
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for ACI notebook'
@@ -94,7 +94,7 @@ stages:
     - task: riserrad.azdo-databricks.azdo-databricks-executenotebook.executenotebook@0
       displayName: Deploy to AKS
       inputs:
-        notebookPath: /Shared/churn-model/deploy-aks
+        notebookPath: /mlops/src/deploy-aks
         existingClusterId: $(databricks-cluster-id)
     - task: riserrad.azdo-databricks.azdo-databricks-waitexecution.waitexecution@0
       displayName: 'Wait for Build image notebook'
