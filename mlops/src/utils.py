@@ -1,5 +1,4 @@
 # Databricks notebook source
-# Databricks notebook source
 import pandas as pd
 import numpy as np
 # Azure libs
@@ -80,77 +79,81 @@ def validate_model(model, X_test, y_test):
 # COMMAND ----------
 
 def get_model_uri(experiment_name, run_name):
-  experiment = MlflowClient().get_experiment_by_name(experiment_name)
-  experiment_ids = eval('[' + experiment.experiment_id + ']')
+    experiment = MlflowClient().get_experiment_by_name(experiment_name)
+    experiment_ids = eval('[' + experiment.experiment_id + ']')
 
-  query = f"tag.mlflow.runName = '{run_name}'"
-  run = MlflowClient().search_runs(experiment_ids, query, ViewType.ALL)[0]
+    query = f"tag.mlflow.runName = '{run_name}'"
+    run = MlflowClient().search_runs(experiment_ids, query, ViewType.ALL)[0]
 
-  return "runs:/" + run.info.run_id + "/model"
+    return "runs:/" + run.info.run_id + "/model"
 
 def load_model(model_uri):
-  model = mlflow.xgboost.load_model(model_uri)
-  return model
+    model = mlflow.xgboost.load_model(model_uri)
+    return model
 
 def persist_model(model, model_path):
-  shutil.rmtree(model_path)
+    shutil.rmtree(model_path)
 
-  # Persist the XGBoost model
-  mlflow.xgboost.save_model(model, model_path)
+    # Persist the XGBoost model
+    mlflow.xgboost.save_model(model, model_path)
 
+def get_model(workspace, model_name):
+    model_azure = Model(workspace, model_name)
+    return model_azure
+    
 def register_model(workspace, model_name, model_description, model_path):
-  model_azure = Model.register(model_path = model_path,
+    model_azure = Model.register(model_path = model_path,
                                model_name = model_name,
                                description = model_description,
                                workspace = workspace,
                                tags={})
-  return model_azure
+    return model_azure
 
 def get_workspace(workspace_name, resource_group, subscription_id):
-  svc_pr = ServicePrincipalAuthentication(
+    svc_pr = ServicePrincipalAuthentication(
       tenant_id = dbutils.secrets.get(scope = "azure-key-vault", key = "tenant-id"),
       service_principal_id = dbutils.secrets.get(scope = "azure-key-vault", key = "client-id"),
       service_principal_password = dbutils.secrets.get(scope = "azure-key-vault", key = "client-secret"))
 
-  workspace = Workspace.get(name = workspace_name,
+    workspace = Workspace.get(name = workspace_name,
                             resource_group = resource_group,
                             subscription_id = subscription_id,
                             auth=svc_pr)
-  
-  return workspace
+
+    return workspace
 
 def get_inference_config(environment_name, conda_file, entry_script):
-  # Create the environment
-  env = Environment(name=environment_name)
+    # Create the environment
+    env = Environment(name=environment_name)
 
-  conda_dep = CondaDependencies(conda_file)
+    conda_dep = CondaDependencies(conda_file)
 
-  # Define the packages needed by the model and scripts
-  conda_dep.add_pip_package("azureml-defaults")
-  conda_dep.add_pip_package("xgboost")
+    # Define the packages needed by the model and scripts
+    conda_dep.add_pip_package("azureml-defaults")
+    conda_dep.add_pip_package("xgboost")
 
-  # Adds dependencies to PythonSection of myenv
-  env.python.conda_dependencies=conda_dep
+    # Adds dependencies to PythonSection of myenv
+    env.python.conda_dependencies=conda_dep
 
-  inference_config = InferenceConfig(entry_script=entry_script,
+    inference_config = InferenceConfig(entry_script=entry_script,
                                      environment=env)
-  
-  return inference_config
+
+    return inference_config
 
 def deploy_aci(workspace, model_azure, endpoint_name, inference_config):
-  deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1, auth_enabled=True)
-  service = Model.deploy(workspace, endpoint_name, [model_azure], inference_config, deployment_config, overwrite=True)
-  service.wait_for_deployment(show_output = True)
+    deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1, auth_enabled=True)
+    service = Model.deploy(workspace, endpoint_name, [model_azure], inference_config, deployment_config, overwrite=True)
+    service.wait_for_deployment(show_output = True)
 
-  print(f"Endpoint : {endpoint_name} was successfully deployed to ACI")
-  print(f"Endpoint : {service.scoring_uri} created")
-  return service
-  
+    print(f"Endpoint : {endpoint_name} was successfully deployed to ACI")
+    print(f"Endpoint : {service.scoring_uri} created")
+    return service
+
 def deploy_aks(workspace, model_azure, endpoint_name, inference_config, aks_name):
-  aks_target = AksCompute(workspace, aks_name)
-  aks_config = AksWebservice.deploy_configuration()
+    aks_target = AksCompute(workspace, aks_name)
+    aks_config = AksWebservice.deploy_configuration()
 
-  aks_service = Model.deploy(workspace=workspace,
+    aks_service = Model.deploy(workspace=workspace,
                              name=endpoint_name,
                              models=[model_azure],
                              inference_config=inference_config,
@@ -158,8 +161,8 @@ def deploy_aks(workspace, model_azure, endpoint_name, inference_config, aks_name
                              deployment_target=aks_target,
                              overwrite=True)
 
-  aks_service.wait_for_deployment(show_output = True)
- 
-  print(f"Endpoint : {endpoint_name} was successfully deployed to AKS")
-  print(f"Endpoint : {aks_service.scoring_uri} created")
-  print('')
+    aks_service.wait_for_deployment(show_output = True)
+
+    print(f"Endpoint : {endpoint_name} was successfully deployed to AKS")
+    print(f"Endpoint : {aks_service.scoring_uri} created")
+    print('')

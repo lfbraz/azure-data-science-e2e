@@ -23,11 +23,7 @@ endpoint_name = 'api-churn-dev'
 
 workspace = get_workspace(workspace_name, resource_group, subscription_id)
 
-model_azure = register_model(workspace, model_name, model_description, model_path)
+model_azure = get_model(workspace, model_name)
 
 inference_config = get_inference_config(environment_name, conda_dep_file, entry_script)
 service = deploy_aci(workspace, model_azure, endpoint_name, inference_config)
-
-# COMMAND ----------
-
-
