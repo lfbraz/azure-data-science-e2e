@@ -30,51 +30,60 @@ import warnings
 warnings.filterwarnings("ignore")
 
 def get_dataset(filename):
-  data = spark.read.parquet(filename)
-  return data.toPandas()
+    data = spark.read.parquet(filename)
+    return data.toPandas()
 
 def preprocessing(dataset):
-  numeric_columns = []
-  for col in dataset.columns:
+    numeric_columns = []
+    for col in dataset.columns:
     if(dataset[col].dtypes!='object'):
-      numeric_columns.append(col)
- 
-  dataset = dataset.dropna()
-  return dataset, numeric_columns
+        numeric_columns.append(col)
+
+    dataset = dataset.dropna()
+    return dataset, numeric_columns
 
 def split_dataset(dataset, seed, test_size=0.33):
-  train_dataset, test_dataset = train_test_split(dataset, random_state=seed, test_size=test_size)
-  return train_dataset, test_dataset
+    train_dataset, test_dataset = train_test_split(dataset, random_state=seed, test_size=test_size)
+    return train_dataset, test_dataset
 
 def get_X_y(train, test, target_column, numeric_columns, drop_columns):
-  X_train = train[numeric_columns].drop(drop_columns, axis=1)
-  X_test = test[numeric_columns].drop(drop_columns, axis=1)
+    X_train = train[numeric_columns].drop(drop_columns, axis=1)
+    X_test = test[numeric_columns].drop(drop_columns, axis=1)
 
-  y_train = train[target_column]
-  y_test = test[target_column]
-  return X_train, X_test, y_train, y_test
+    y_train = train[target_column]
+    y_test = test[target_column]
+    return X_train, X_test, y_train, y_test
+
+def persist_shap():
+    import shap
+    import matplotlib.pyplot as plt
+
+    shap_values = shap.TreeExplainer(model).shap_values(X_train)
+    shap.summary_plot(shap_values, X_train, show=False)
+    plt.savefig('/dbfs/mnt/documents/images/scratch.png')
 
 def train_model(X_train, y_train, X_test, y_test):
-  mlflow.set_experiment('/churn-prediction')
-  
-  with mlflow.start_run(run_name='mlops-train') as run:
-    train = xgb.DMatrix(data=X_train, label=y_train)
-    test = xgb.DMatrix(data=X_test, label=y_test)
-    
-    # Pass in the test set so xgb can track an evaluation metric. XGBoost terminates training when the evaluation metric
-    # is no longer improving.
-    model = xgb.train(params=params, dtrain=train, num_boost_round=1000,\
-                       evals=[(test, "test")], early_stopping_rounds=50)
+    mlflow.set_experiment('/churn-prediction')
 
-    mlflow.xgboost.log_model(model, 'model')
-    run_id = run.info.run_id
+    with mlflow.start_run(run_name='mlops-train') as run:
+        train = xgb.DMatrix(data=X_train, label=y_train)
+        test = xgb.DMatrix(data=X_test, label=y_test)
 
-  return "runs:/" + run_id + "/model"
+        # Pass in the test set so xgb can track an evaluation metric. XGBoost terminates training when the evaluation metric
+        # is no longer improving.
+        model = xgb.train(params=params, dtrain=train, num_boost_round=1000,\
+                           evals=[(test, "test")], early_stopping_rounds=50)
+
+        mlflow.xgboost.log_model(model, 'model')
+        mlflow.log_artifact("features.txt")
+        run_id = run.info.run_id
+
+    return "runs:/" + run_id + "/model"
 
 def validate_model(model, X_test, y_test):
-  predictions_test = model.predict_proba(X_test)[:,1]
-  auc_score = roc_auc_score(y_test, predictions_test)
-  return auc_score
+    predictions_test = model.predict_proba(X_test)[:,1]
+    auc_score = roc_auc_score(y_test, predictions_test)
+    return auc_score
 
 # COMMAND ----------
 
