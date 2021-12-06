@@ -141,6 +141,7 @@ def get_inference_config(environment_name, conda_file, entry_script):
 
     # Define the packages needed by the model and scripts
     conda_dep.add_pip_package("azureml-defaults")
+    conda_dep.add_pip_package("azureml-monitoring")
     conda_dep.add_pip_package("xgboost")
 
     # Adds dependencies to PythonSection of myenv
@@ -162,7 +163,7 @@ def deploy_aci(workspace, model_azure, endpoint_name, inference_config):
 
 def deploy_aks(workspace, model_azure, endpoint_name, inference_config, aks_name):
     aks_target = AksCompute(workspace, aks_name)
-    aks_config = AksWebservice.deploy_configuration()
+    aks_config = AksWebservice.deploy_configuration(enable_app_insights = True, collect_model_data=True)
 
     aks_service = Model.deploy(workspace=workspace,
                              name=endpoint_name,
