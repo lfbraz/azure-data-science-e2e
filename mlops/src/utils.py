@@ -29,6 +29,10 @@ import xgboost as xgb
 import warnings
 warnings.filterwarnings("ignore")
 
+# Shap
+import shap
+import matplotlib.pyplot as plt
+    
 def get_dataset(filename):
     data = spark.read.parquet(filename)
     return data.toPandas()
@@ -36,8 +40,8 @@ def get_dataset(filename):
 def preprocessing(dataset):
     numeric_columns = []
     for col in dataset.columns:
-    if(dataset[col].dtypes!='object'):
-        numeric_columns.append(col)
+        if(dataset[col].dtypes!='object'):
+            numeric_columns.append(col)
 
     dataset = dataset.dropna()
     return dataset, numeric_columns
@@ -54,13 +58,10 @@ def get_X_y(train, test, target_column, numeric_columns, drop_columns):
     y_test = test[target_column]
     return X_train, X_test, y_train, y_test
 
-def persist_shap():
-    import shap
-    import matplotlib.pyplot as plt
-
+def persist_shap(model, X_train):
     shap_values = shap.TreeExplainer(model).shap_values(X_train)
     shap.summary_plot(shap_values, X_train, show=False)
-    plt.savefig('/dbfs/mnt/documents/images/scratch.png')
+    plt.savefig('/dbfs/mnt/documents/images/shap.png')
 
 def train_model(X_train, y_train, X_test, y_test):
     mlflow.set_experiment('/churn-prediction')
@@ -75,7 +76,8 @@ def train_model(X_train, y_train, X_test, y_test):
                            evals=[(test, "test")], early_stopping_rounds=50)
 
         mlflow.xgboost.log_model(model, 'model')
-        mlflow.log_artifact("features.txt")
+        persist_shap(model, X_train)
+        mlflow.log_artifact('/dbfs/mnt/documents/images/shap.png')
         run_id = run.info.run_id
 
     return "runs:/" + run_id + "/model"
