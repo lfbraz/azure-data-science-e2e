@@ -16,7 +16,7 @@
 # MAGIC     global train_stats
 # MAGIC     global inputs_dc
 # MAGIC     
-# MAGIC     inputs_dc = ModelDataCollector("ChurnModel", designation="inputs", feature_names= ["Idade","RendaMensal","PercentualUtilizacaoLimite","QtdTransacoesNegadas","AnosDeRelacionamentoBanco","JaUsouChequeEspecial","QtdEmprestimos","NumeroAtendimentos","TMA","IndiceSatisfacao","Saldo","CLTV","churn-prediction"])
+# MAGIC     inputs_dc = ModelDataCollector("churn", designation="inputs", feature_names= ["Idade","RendaMensal","PercentualUtilizacaoLimite","QtdTransacoesNegadas","AnosDeRelacionamentoBanco","JaUsouChequeEspecial","QtdEmprestimos","NumeroAtendimentos","TMA","IndiceSatisfacao","Saldo","CLTV","churn-prediction"])
 # MAGIC 
 # MAGIC     # Get the path where the deployed model can be found.
 # MAGIC     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), './churn-prediction')

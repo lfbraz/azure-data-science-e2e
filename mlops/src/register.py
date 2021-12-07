@@ -9,7 +9,7 @@ resource_group = dbutils.secrets.get(scope = "azure-key-vault", key = "resource-
 subscription_id = dbutils.secrets.get(scope = "azure-key-vault", key = "subscription-id")
 
 # Model
-model_name = 'ChurnModel'
+model_name = 'churn'
 model_description = 'Model to predict churn'
 model_path = '/dbfs/models/churn-prediction'
 
