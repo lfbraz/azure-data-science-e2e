@@ -24,7 +24,7 @@ params = {'early_stopping_rounds': 50,
           'maximize': False, 
           'min_child_weight': 19.22, 
           'num_boost_round': 1000, 
-          'reg_alpha': 0.010, 
+          'reg_alpha': 0.01, 
           'reg_lambda': 0.348, 
           'verbose_eval': False,
           'seed': seed}
