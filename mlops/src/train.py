@@ -20,7 +20,7 @@ train_dataset, test_dataset = split_dataset(dataset, seed)
 # Parameters we got from the best interaction
 params = {'early_stopping_rounds': 50, 
           'learning_rate': 0.2261, 
-          'max_depth': 64, 
+          'max_depth': 65, 
           'maximize': False, 
           'min_child_weight': 19.22, 
           'num_boost_round': 1000, 
