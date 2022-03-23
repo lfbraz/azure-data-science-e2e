@@ -20,7 +20,7 @@ entry_script = '/dbfs/models/churn-prediction/score.py'
 
 #Endpoint - PROD
 endpoint_name = 'api-churn-prod'
-aks_name = 'aks-e2e-1'
+aks_name = 'aks-e2e-ds'
 
 workspace = get_workspace(workspace_name, resource_group, subscription_id)
 
