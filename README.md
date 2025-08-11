@@ -32,7 +32,7 @@ The following prerequisites must be completed before you start these labs:
 
 * You must be connected to the internet;
 
-* Use either Edge or Chrome when executing the labs. Internet Explorer may have issues when rendering the UI for specific Azure services.
+* Use either Edge or Chrome when executing the labs. Internet Explorer may have issues when rendering the UI for specific Azure services;
 
 * You must have a Pay-As-You-Go Azure account with administrator - or contributor-level access to your subscription. If you don't have an account, you can sign up for an account following the instructions here: https://azure.microsoft.com/en-au/pricing/purchase-options/pay-as-you-go/.
 
